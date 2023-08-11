@@ -1,0 +1,21 @@
+<%- include("partials/header.ejs") %>
+<main>
+<div class="box" id="heading">
+    <h1>
+        <%= locals.whichDay%>, <%= locals.whichDate %> <%= locals.whichMonth %>
+    </h1>
+</div>
+<div class="box">
+    <% for(let i=0; i<locals.lengthOfList; i++) { %>
+        <% if(locals.taskName=='') { continue; }%>
+            <div class="item">
+                <input type="checkbox"/>
+                <p><%=taskName[i] %></p>
+            </div>
+    <% } %>
+    <form class="item" action="/submit" method="post">
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off" />
+        <button type="submit" name="submit" value="submit">+</button>
+    </form>
+</div>
+<%- include("partials/footer.ejs") %>
